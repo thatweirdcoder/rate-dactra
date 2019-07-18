@@ -25,12 +25,12 @@ def before_first_request():
 def index():
     form = forms.NewTeacherForm()
     if form.validate_on_submit():
-        flash(f'{form.name.data} is pending review!', 'warning')
+        flash(f'{form.name.data}, ahhhhhhhhhhhhhh welcome!', 'info')  # TODO: put evil emoji here
         t = models.Teacher(name=form.name.data)
         models.db.session.add(t)
         models.db.session.commit()
         return redirect(url_for('index'))
-    database = models.Teacher.query.filter_by(is_approved=True)
+    database = models.Teacher.query.order_by(models.Teacher.name).all()
     teachers = (
         {'name': t.name, 'photo': t.photo,
          'bedan_factor':
@@ -41,6 +41,14 @@ def index():
         'teachers': teachers
     }
     return render_template('index.html', **context)
+
+
+@app.route('/<string:name>')
+def teacher_page(name):
+    context = {
+        'name': name
+    }
+    return render_template('teacher_page.html', **context)
 
 
 @app.errorhandler(404)
