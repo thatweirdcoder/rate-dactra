@@ -13,10 +13,11 @@ class User(db.Model):
 class Teacher(db.Model):
     __tabel_name__ = 'teachers'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
+    name = db.Column(db.String(64))
     email = db.Column(db.String(64), nullable=True)
     phone = db.Column(db.String(64), nullable=True)
     photo = db.Column(db.LargeBinary, nullable=True)
+    is_approved = db.Column(db.Boolean, default=False)
 
 
 class Review(db.Model):
@@ -41,5 +42,6 @@ class Comment(db.Model):
     student_major = db.Column(db.String(64))
     grade_received = db.Column(db.String(2))
     comment = db.Column(db.String(140))
+    is_approved = db.Column(db.Boolean, default=False)
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
     teacher = db.relationship('Teacher', backref=db.backref('comments', lazy=True))

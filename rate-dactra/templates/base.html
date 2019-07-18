@@ -1,6 +1,9 @@
 {% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/utils.html' as utils %}
 
-{% block title %}{% block page_title %}{% endblock %} | Rate Dactra{% endblock %}
+{% block html_attribs %} lang="en"{% endblock %}
+
+{% block title %} | Rate Dactra{% endblock %}
 
 {% block navbar %}
     <div class='navbar navbar-inverse' role='navigation'>
@@ -27,12 +30,7 @@
 
 {% block content %}
     <div class='container'>
-        {% for message in get_flashed_messages() %}
-            <div class="alert alert-warning">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                {{ message }}
-            </div>
-        {% endfor %}
+        {{ utils.flashed_messages(container=False, dismissible=True) }}
         {% block page_content %}{% endblock %}
     </div>
 {% endblock %}
