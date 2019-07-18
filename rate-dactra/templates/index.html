@@ -6,10 +6,15 @@
     </div>
     <ul>
         {% for teacher in teachers %}
-            <li>{{ teacher.name }}</li>
-            {% for review in teacher.reviews %}
-                <li>{{ review.average_grading }}</li>
-            {% endfor %}
+            <li>
+                <div>
+                    <p>{{ teacher['name'] }}</p>
+                    {% if teacher['photo'] %}
+                        <p>{{ teacher['photo'] }}</p>
+                    {% endif %}
+                    <p>{{ teacher['bedan_factor'] }}</p>
+                </div>
+            </li>
         {% endfor %}
     </ul>
 
