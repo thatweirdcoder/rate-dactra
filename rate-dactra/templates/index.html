@@ -4,4 +4,13 @@
     <div class='page-header'>
         <h1>Index page</h1>
     </div>
+    <ul>
+        {% for teacher in teachers %}
+            <li>{{ teacher.name }}</li>
+            {% for review in teacher.reviews %}
+                <li>{{ review.average_grading }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+
 {% endblock %}
