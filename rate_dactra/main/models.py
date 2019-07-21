@@ -11,7 +11,7 @@ class User(db.Model):
 
 
 class Teacher(db.Model):
-    __tabel_name__ = 'teachers'
+    __table_name__ = 'teachers'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     email = db.Column(db.String(64), nullable=True)
