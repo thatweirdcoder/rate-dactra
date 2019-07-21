@@ -25,6 +25,21 @@ def index():
     return render_template('index.html', **context)
 
 
+@main.route('/login')
+def login():
+    context = {
+
+    }
+    return render_template('login.html', **context)
+
+
+@main.route('/admin')
+def admin():
+    context = {
+
+    }
+    return render_template('admin.html', **context)
+
 @main.route('/<string:name>')
 def teacher_page(name):
     context = {
