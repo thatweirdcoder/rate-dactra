@@ -25,11 +25,18 @@ def index():
     return render_template('index.html', **context)
 
 
-@main.route('/login')
+@main.route('/login', methods=('GET', 'POST'))
 def login():
+    form = forms.LoginForm()
     context = {
-
+        'form': form
     }
+    if form.validate_on_submit():
+        user = models.User.query.filter_by(username=form.name.data,
+                                           password=form.password.data).first()
+        if user:
+            return redirect(url_for('.admin'))
+        flash('DUMBFUCK', 'error')
     return render_template('login.html', **context)
 
 
@@ -39,6 +46,7 @@ def admin():
 
     }
     return render_template('admin.html', **context)
+
 
 @main.route('/<string:name>')
 def teacher_page(name):
