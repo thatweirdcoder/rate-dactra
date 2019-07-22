@@ -6,7 +6,11 @@
 {% block title %} | Rate Dactra{% endblock %}
 
 {% block navbar %}
-    {{ nav.basenavbar.render(renderer='inverse_bootstrap_renderer') }}
+    {% if current_user.is_authenticated %}
+        {{ nav.loggedinnavbar.render(renderer='inverse_bootstrap_renderer') }}
+    {% else %}
+        {{ nav.basenavbar.render(renderer='inverse_bootstrap_renderer') }}
+    {% endif %}
 {% endblock %}
 
 {% block content %}

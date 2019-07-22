@@ -12,7 +12,17 @@ nav = Nav()
 def basenavbar():
     return Navbar(
         View('Logo', 'main.index'),
-        View('Comparing Tool', 'main.index')
+        View('Comparing Tool', 'main.index'),
+        View('Log In', 'main.login')
+    )
+
+
+@nav.navigation()
+def loggedinnavbar():
+    return Navbar(
+        View('Logo', 'main.index'),
+        View('Comparing Tool', 'main.index'),
+        View('Log Out', 'main.logout')
     )
 
 

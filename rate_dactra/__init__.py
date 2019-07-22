@@ -2,7 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 
 from config import config
-from main.models import db
+from main.models import db, login_manager
 from main.navbars import nav
 
 bootstrap = Bootstrap()
@@ -15,6 +15,7 @@ def create_app(c):
     bootstrap.init_app(app)
     db.init_app(app)
     nav.init_app(app)
+    login_manager.init_app(app)
 
     from main import main as main_blueprint
     app.register_blueprint(main_blueprint)
