@@ -8,7 +8,7 @@ from . import main, forms, models
 def index():
     form = forms.NewTeacherForm()
     if form.validate_on_submit():
-        flash(f'{form.name.data}, ahhhhhhhhhhhhhh welcome!', 'info')  # TODO: put evil emoji here
+        flash(f'{form.name.data.title()}, ahhhhhhhhhhhhhh welcome!', 'info')  # TODO: put evil emoji here
         t = models.Teacher(name=form.name.data)
         models.db.session.add(t)
         models.db.session.commit()
@@ -25,6 +25,9 @@ def index():
     }
     return render_template('index.html', **context)
 
+
+# TODO: isolate the login auth in another app than main
+# TODO: make database shared between apps
 
 @main.route('/login', methods=('GET', 'POST'))
 def login():
@@ -44,6 +47,22 @@ def login():
     return render_template('login.html', **context)
 
 
+@main.route('/compare')
+def compare():
+    context = {
+
+    }
+    return render_template('compare.html', **context)
+
+
+@main.route('/teacher/<string:name>')
+def teacher_page(name):
+    context = {
+        'name': name
+    }
+    return render_template('teacher_page.html', **context)
+
+
 @main.route('/admin')
 @login_required
 def admin():
@@ -61,10 +80,3 @@ def logout():
     logout_user()
     flash('Bye bye!', 'info')
     return redirect(url_for('.login', **context))
-
-@main.route('/<string:name>')
-def teacher_page(name):
-    context = {
-        'name': name
-    }
-    return render_template('teacher_page.html', **context)

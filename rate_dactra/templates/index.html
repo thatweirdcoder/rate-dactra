@@ -15,8 +15,8 @@
         {% for teacher in teachers %}
             <li>
                 <div>
-                    <a href="{{ teacher['name'] }}">
-                        <h2>{{ teacher['name'] }}</h2>
+                    <a href='/teacher/{{ teacher['name'] }}'>
+                        <h2>{{ teacher['name']|title }}</h2>
                     {% if teacher['photo'] %}
                         <img src="{{ teacher['photo'] }}"> {# TODO: this is not how this works #}
                     {% endif %}
