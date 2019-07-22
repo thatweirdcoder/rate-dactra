@@ -32,9 +32,8 @@ def login():
         'form': form
     }
     if form.validate_on_submit():
-        user = models.User.query.filter_by(username=form.name.data,
-                                           password=form.password.data).first()
-        if user:
+        user = models.User.query.filter_by(username=form.name.data).first()
+        if user.verity_password(form.password.data):
             return redirect(url_for('.admin'))
         flash('DUMBFUCK', 'error')
     return render_template('login.html', **context)
