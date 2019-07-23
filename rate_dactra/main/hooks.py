@@ -1,5 +1,5 @@
-from main import models
 from . import main
+from .. import models
 
 
 @main.before_app_first_request
