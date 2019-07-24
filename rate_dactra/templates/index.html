@@ -15,12 +15,12 @@
         {% for teacher in teachers %}
             <li>
                 <div>
-                    <a href='/teacher/{{ teacher['name'] }}'>
-                        <h2>{{ teacher['name']|title }}</h2>
-                    {% if teacher['photo'] %}
-                        <img src="{{ teacher['photo'] }}"> {# TODO: this is not how this works #}
+                    <a href='/{{ teacher.name|lower }}'>
+                        <h2>{{ teacher.name|title }}</h2>
+                        {% if teacher.photo %}
+                            <img src="{{ teacher.photo }}"> {# TODO: this is not how this works #}
                     {% endif %}
-                    <p>{{ teacher['bedan_factor'] }}</p>
+                        <p>{{ teacher.bedan }}</p>
                     </a>
                 </div>
             </li>

@@ -33,10 +33,10 @@ class User(UserMixin, db.Model):
 class Teacher(db.Model):
     __table_name__ = 'teachers'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
+    name = db.Column(db.String(64), unique=True)
     email = db.Column(db.String(64), nullable=True)
     phone = db.Column(db.String(64), nullable=True)
-    photo = db.Column(db.LargeBinary, nullable=True)
+    photo = db.Column(db.String, nullable=True)
     is_approved = db.Column(db.Boolean, default=False)
 
 

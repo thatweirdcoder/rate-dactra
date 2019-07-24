@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block title %}{{ name|capitalize }}{{ super() }}{% endblock %}
+{% block title %}{{ teacher.name|title }}{{ super() }}{% endblock %}
 
 {% block page_content %}
     <div class='page-header'>
-        <h1>{{ name|upper }}</h1>
+        <h1>{{ teacher.name|title }}</h1>
+        {% if teacher.photo %}
+            j<img src="{{ teacher.photo }}"> {# TODO: fix this #}
+        {% endif %}
+    </div>
+    <div>
+        {{ wtf.quick_form(form) }}
     </div>
 {% endblock %}
