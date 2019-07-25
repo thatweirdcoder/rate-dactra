@@ -34,7 +34,7 @@ class EditTeacherForm(FlaskForm):
 
 
 class ReviewTeacherForm(FlaskForm):
-    take_again = BooleanField('If you go back in time, would you take the class with him again?')
+    take_again = BooleanField('If you go back in time, would you take the class again?')
     attendance = BooleanField('Does the teacher care about attendance?')
     understanding = BooleanField('Do you understand from the teacher?')
     sexism = BooleanField('Does the teacher favour boys over girls or girls over boys? Sexist?')

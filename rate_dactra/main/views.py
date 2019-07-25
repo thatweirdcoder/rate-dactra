@@ -18,7 +18,7 @@ def index():
             flash('Already in the database!', 'error')
             models.db.session.rollback()
         else:
-            flash(f'{form.name.data.title()}, ahhhhhhhhhhhhhh welcome!', 'info')  # TODO: put evil emoji here
+            flash(f'{form.name.data.title()}, ahhhhhhhhhhhhhh welcome! :D', 'info')  # TODO: put evil emoji here
             return redirect(url_for('.index'))
 
     teachers = models.Teacher.query.order_by(models.Teacher.name).all()
@@ -86,6 +86,19 @@ def teacher_page(name):
         models.db.session.commit()
         flash('Thank you for your review! You are Cute! :D', 'info')
         return redirect(url_for('.teacher_page', name=teacher.name))
+
+    reviews_num = (len(teacher.reviews) if teacher.reviews else 1) / 100
+    teacher.take_again = (len([r for r in teacher.reviews if r.take_again])) // reviews_num
+    teacher.attendance = (len([r for r in teacher.reviews if r.attendance])) // reviews_num
+    teacher.understanding = (len([r for r in teacher.reviews if r.understanding])) // reviews_num
+    teacher.sexism = (len([r for r in teacher.reviews if r.sexism])) // reviews_num
+    teacher.bedan = (len([r for r in teacher.reviews if r.bedan])) // reviews_num
+    teacher.interesting = (len([r for r in teacher.reviews if r.interesting])) // reviews_num
+    teacher.english = (len([r for r in teacher.reviews if r.english])) // reviews_num
+
+    over_all = (teacher.take_again, teacher.attendance, teacher.understanding, teacher.sexism, teacher.bedan,
+                teacher.interesting, teacher.english)
+    teacher.overall = sum(over_all) // len(over_all)
 
     context = {
         'teacher': teacher,

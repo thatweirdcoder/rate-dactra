@@ -16,6 +16,72 @@
             {% if teacher.phone %}
                 <li>Phone: {{ teacher.phone }}</li>
             {% endif %}
+            {% if teacher.reviews %}
+                {% if teacher.overall >= 50 %}
+                    <li>Overall I give {{ teacher.name|title }} a {{ teacher.overall }}%. Not bad!</li>
+                {% else %}
+                    <li>Overall I give {{ teacher.name|title }} a {{ teacher.overall }}%. Huh,
+                        is {{ teacher.name|title }} even trying!
+                    </li>
+                {% endif %}
+                {% if teacher.take_again >= 50 %}
+                    <li>{{ teacher.take_again }}% students would take {{ teacher.name|title }}'s class again. Nice, must
+                        have been a nice experience.
+                    </li>
+                {% else %}
+                    <li>{{ teacher.take_again }}% students would take {{ teacher.name|title }}'s class again. Wow, just
+                        walk away buddy.
+                    </li>
+                {% endif %}
+                {% if teacher.attendance >= 50 %}
+                    <li>{{ teacher.attendance }}% students think {{ teacher.name|title }} cares about attendance. Don't
+                        miss a lecture.
+                    </li>
+                {% else %}
+                    <li>{{ teacher.attendance }}% students think {{ teacher.name|title }} cares about attendance. Now
+                        you can sleep in like a baby I guess!
+                    </li>
+                {% endif %}
+                {% if teacher.understanding >= 50 %}
+                    <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}. Yes, another
+                        teacher who doesn't think that teaching is reading of powerpoints.
+                    </li>
+                {% else %}
+                    <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}. Silly me
+                        thinking I can go to class and understand. :)
+                    </li>
+                {% endif %}
+                {% if teacher.sexism >= 50 %}
+                    <li>{{ teacher.sexism }}% students find {{ teacher.name|title }} sexist. {{ teacher.name|title }}
+                        you make me proud.
+                    </li>
+                {% else %}
+                    <li>{{ teacher.sexism }}% students find {{ teacher.name|title }} sexist. Shame on you wallahi!</li>
+                {% endif %}
+                {% if teacher.bedan >= 50 %}
+                    <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. So nice teachers do
+                        exists? Huh!
+                    </li>
+                {% else %}
+                    <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. :) ...</li>
+                {% endif %}
+                {% if teacher.interesting >= 50 %}
+                    <li>{{ teacher.interesting }}% students find {{ teacher.name|title }} interesting. Yayyyyy!</li>
+                {% else %}
+                    <li>{{ teacher.interesting }}% students find {{ teacher.name|title }} interesting. Have some coffee
+                        before {{ teacher.name|title }}'s lecture.
+                    </li>
+                {% endif %}
+                {% if teacher.english >= 50 %}
+                    <li>{{ teacher.english }}% students think {{ teacher.name|title }} is good at English. Good for
+                        you {{ teacher.name|title }}.
+                    </li>
+                {% else %}
+                    <li>{{ teacher.english }}% students think {{ teacher.name|title }} is good at English. If you are a
+                        foreigner, Take a translator with you!
+                    </li>
+                {% endif %}
+            {% endif %}
         </ul>
     </div>
     <div>
