@@ -43,27 +43,27 @@
                     </li>
                 {% endif %}
                 {% if teacher.understanding >= 50 %}
-                    <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}. Yes, another
-                        teacher who doesn't think that teaching is reading of powerpoints.
+                    <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}.
+                        Nnnnnnnice!
                     </li>
                 {% else %}
-                    <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}. Silly me
-                        thinking I can go to class and understand. :)
+                    <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}. The art of
+                        reading powerpoint slides
                     </li>
                 {% endif %}
                 {% if teacher.sexism >= 50 %}
+                    <li>{{ teacher.sexism }}% students find {{ teacher.name|title }} sexist. Shame on you wallahi!</li>
+                {% else %}
                     <li>{{ teacher.sexism }}% students find {{ teacher.name|title }} sexist. {{ teacher.name|title }}
                         you make me proud.
                     </li>
-                {% else %}
-                    <li>{{ teacher.sexism }}% students find {{ teacher.name|title }} sexist. Shame on you wallahi!</li>
                 {% endif %}
                 {% if teacher.bedan >= 50 %}
+                    <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. :) ...</li>
+                {% else %}
                     <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. So nice teachers do
                         exists? Huh!
                     </li>
-                {% else %}
-                    <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. :) ...</li>
                 {% endif %}
                 {% if teacher.interesting >= 50 %}
                     <li>{{ teacher.interesting }}% students find {{ teacher.name|title }} interesting. Yayyyyy!</li>
@@ -86,13 +86,13 @@
     </div>
     <div>
         <h2>Edit {{ teacher.name|title }}'s info:</h2>
-        {{ wtf.quick_form(edit_teacher_form) }}
+        {{ wtf.quick_form(edit_teacher_form, action=url_for('main.edit_teacher', name=teacher.name)) }}
     </div>
     <div>
         <h2>Review {{ teacher.name|title }}:</h2>
-        {{ wtf.quick_form(review_teacher_form) }}
+        {{ wtf.quick_form(review_teacher_form, action=url_for('main.review_teacher', name=teacher.name)) }}
     </div>
     <div>
-        <h2>Comment of {{ teacher.name|title }}:</h2>
+        <h2>Comment on {{ teacher.name|title }}:</h2>
     </div>
 {% endblock %}
