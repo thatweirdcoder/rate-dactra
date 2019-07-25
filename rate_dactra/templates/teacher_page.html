@@ -5,12 +5,28 @@
 
 {% block page_content %}
     <div class='page-header'>
-        <h1>{{ teacher.name|title }}</h1>
         {% if teacher.photo %}
-            j<img src="{{ teacher.photo }}"> {# TODO: fix this #}
+            <img src="{{ teacher.photo }}">
         {% endif %}
+        <h1>{{ teacher.name|title }}</h1>
+        <ul>
+            {% if teacher.email %}
+                <li>Email: {{ teacher.email }}</li>
+            {% endif %}
+            {% if teacher.phone %}
+                <li>Phone: {{ teacher.phone }}</li>
+            {% endif %}
+        </ul>
     </div>
     <div>
-        {{ wtf.quick_form(form) }}
+        <h2>Edit {{ teacher.name|title }}'s info:</h2>
+        {{ wtf.quick_form(edit_teacher_form) }}
+    </div>
+    <div>
+        <h2>Review {{ teacher.name|title }}:</h2>
+        {{ wtf.quick_form(review_teacher_form) }}
+    </div>
+    <div>
+        <h2>Comment of {{ teacher.name|title }}:</h2>
     </div>
 {% endblock %}

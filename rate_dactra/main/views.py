@@ -45,25 +45,51 @@ def compare():
 @main.route('/<string:name>', methods=['GET', 'POST'])
 def teacher_page(name):
     teacher = models.Teacher.query.filter_by(name=name).first_or_404()
-    form = forms.EditTeacherForm()
-    if form.submit.data:
-        if form.name.data:
-            form.name.validate(form)
-        if form.photo.data:
-            form.photo.validate(form)
-            filename = photos.save(form.photo.data)
-            teacher.photo = photos.url(filename)
-        if form.email.data:
-            form.email.validate(form)
-        if form.phone.data:
-            form.phone.validate(form)
+    edit_teacher_form = forms.EditTeacherForm()
+    if edit_teacher_form.submit.data:
+        if edit_teacher_form.name.data:
+            if edit_teacher_form.name.validate(edit_teacher_form):
+                teacher.name = edit_teacher_form.name.data
+                teacher.is_approved = False
+                return redirect(url_for('.teacher_page', name=teacher.name))
+        if edit_teacher_form.photo.data:
+            if edit_teacher_form.photo.validate(edit_teacher_form):
+                filename = photos.save(edit_teacher_form.photo.data)
+                teacher.photo = photos.url(filename)
+                teacher.is_approved = False
+                return redirect(url_for('.teacher_page', name=teacher.name))
+        if edit_teacher_form.email.data:
+            if edit_teacher_form.email.validate(edit_teacher_form):
+                teacher.email = edit_teacher_form.email.data
+                teacher.is_approved = False
+                return redirect(url_for('.teacher_page', name=teacher.name))
+        if edit_teacher_form.phone.data:
+            if edit_teacher_form.phone.validate(edit_teacher_form):
+                teacher.phone = edit_teacher_form.phone.data
+                teacher.is_approved = False
+                return redirect(url_for('.teacher_page', name=teacher.name))
 
         models.db.session.add(teacher)
         models.db.session.commit()
+
+    review_teacher_form = forms.ReviewTeacherForm()
+    if review_teacher_form.validate_on_submit():
+        review = models.Review(take_again=review_teacher_form.take_again.data,
+                               attendance=review_teacher_form.attendance.data,
+                               understanding=review_teacher_form.understanding.data,
+                               sexism=review_teacher_form.sexism.data,
+                               bedan=review_teacher_form.bedan.data,
+                               interesting=review_teacher_form.interesting.data,
+                               english=review_teacher_form.english.data,
+                               teacher=teacher)
+        models.db.session.add(review)
+        models.db.session.commit()
+        flash('Thank you for your review! You are Cute! :D', 'info')
         return redirect(url_for('.teacher_page', name=teacher.name))
 
     context = {
         'teacher': teacher,
-        'form': form
+        'edit_teacher_form': edit_teacher_form,
+        'review_teacher_form': review_teacher_form
     }
     return render_template('teacher_page.html', **context)

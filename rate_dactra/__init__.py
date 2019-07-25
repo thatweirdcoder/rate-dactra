@@ -12,7 +12,7 @@ photos = UploadSet('photos', IMAGES)
 bootstrap = Bootstrap()
 
 
-def create_app(_):
+def create_app():
     app = Flask(__name__)
     app.config.from_object(config[os.getenv('FLASK_CONFIG') or 'default'])
 

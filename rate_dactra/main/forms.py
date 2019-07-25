@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, BooleanField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Length, Email, NoneOf
 
@@ -32,3 +32,13 @@ class EditTeacherForm(FlaskForm):
     ])
     submit = SubmitField('Submit')
 
+
+class ReviewTeacherForm(FlaskForm):
+    take_again = BooleanField('If you go back in time, would you take the class with him again?')
+    attendance = BooleanField('Does the teacher care about attendance?')
+    understanding = BooleanField('Do you understand from the teacher?')
+    sexism = BooleanField('Does the teacher favour boys over girls or girls over boys? Sexist?')
+    bedan = BooleanField('Bedan?')
+    interesting = BooleanField('Is the teacher interesting?')
+    english = BooleanField('Is the teacher good at English?')
+    submit = SubmitField('Submit')

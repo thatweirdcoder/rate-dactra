@@ -43,7 +43,6 @@ class Teacher(db.Model):
 class Review(db.Model):
     __table_name__ = 'reviews'
     id = db.Column(db.Integer, primary_key=True)
-    average_grading = db.Column(db.String(2))
     take_again = db.Column(db.Boolean)
     attendance = db.Column(db.Boolean)
     understanding = db.Column(db.Boolean)
