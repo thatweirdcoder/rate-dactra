@@ -45,9 +45,10 @@ def compare():
 @main.route('/<string:name>', methods=['GET', 'POST'])
 def teacher_page(name):
     teacher = models.Teacher.query.filter_by(name=name).first_or_404()
+    comments = models.Comment.query.filter_by(teacher=teacher).all()
     edit_teacher_form = forms.EditTeacherForm()
-
     review_teacher_form = forms.ReviewTeacherForm()
+    comment_on_teacher_form = forms.CommentOnTeacherForm()
 
     reviews_num = (len(teacher.reviews) if teacher.reviews else 1) / 100
     teacher.take_again = (len([r for r in teacher.reviews if r.take_again])) // reviews_num
@@ -64,8 +65,10 @@ def teacher_page(name):
 
     context = {
         'teacher': teacher,
+        'comments': comments,
         'edit_teacher_form': edit_teacher_form,
-        'review_teacher_form': review_teacher_form
+        'review_teacher_form': review_teacher_form,
+        'comment_on_teacher_form': comment_on_teacher_form
     }
     return render_template('teacher_page.html', **context)
 
@@ -76,7 +79,7 @@ def edit_teacher(name):
     edit_teacher_form = forms.EditTeacherForm()
     if edit_teacher_form.name.data:
         if edit_teacher_form.name.validate(edit_teacher_form):
-            teacher.name = edit_teacher_form.name.data
+            teacher.name = edit_teacher_form.name.data.lower()
             teacher.is_approved = False
             flash(f'Name changed to {teacher.name.title()}')
     if edit_teacher_form.photo.data:
@@ -98,7 +101,7 @@ def edit_teacher(name):
 
     models.db.session.add(teacher)
     models.db.session.commit()
-    return redirect(url_for('.teacher_page', name=teacher.name))
+    return redirect(url_for('.teacher_page', name=name))
 
 
 @main.route('/review/<string:name>', methods=['POST'])
@@ -116,4 +119,18 @@ def review_teacher(name):
     models.db.session.add(review)
     models.db.session.commit()
     flash('Thank you for your review! You are Cute! :D', 'info')
-    return redirect(url_for('.teacher_page', name=teacher.name))
+    return redirect(url_for('.teacher_page', name=name))
+
+
+@main.route('/comment/<string:name>', methods=['POST'])
+def comment_on_teacher(name):
+    teacher = models.Teacher.query.filter_by(name=name).first_or_404()
+    comment_on_teacher_form = forms.CommentOnTeacherForm()
+    comment = models.Comment(course_name=comment_on_teacher_form.course_name.data,
+                             grade_received=comment_on_teacher_form.grade_received.data,
+                             comment=comment_on_teacher_form.comment.data,
+                             teacher=teacher)
+    models.db.session.add(comment)
+    models.db.session.commit()
+    flash('Than you for your comment! You are Cute! :D')
+    return redirect(url_for('.teacher_page', name=name))

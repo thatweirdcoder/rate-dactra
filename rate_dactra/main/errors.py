@@ -11,3 +11,8 @@ def page_not_found(_):
 @main.app_errorhandler(500)
 def internal_server_error(_):
     return render_template('500.html')
+
+
+@main.app_errorhandler(405)
+def method_not_allowed(_):
+    return render_template('405.html')

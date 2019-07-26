@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, SubmitField, BooleanField
+from wtforms import StringField, SubmitField, BooleanField, SelectField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Length, Email, NoneOf
 
@@ -30,7 +30,7 @@ class EditTeacherForm(FlaskForm):
     phone = StringField('Teacher phone number (10XXXXXXXX) ', validators=[
         Length(min=10, max=13)
     ])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Edit')
 
 
 class ReviewTeacherForm(FlaskForm):
@@ -41,4 +41,21 @@ class ReviewTeacherForm(FlaskForm):
     bedan = BooleanField('Bedan?')
     interesting = BooleanField('Is the teacher interesting?')
     english = BooleanField('Is the teacher good at English?')
-    submit = SubmitField('Submit')
+    submit = SubmitField('Review')
+
+
+class CommentOnTeacherForm(FlaskForm):
+    course_name = StringField('Class name')
+    grade_received = SelectField('Grade received',
+                                 choices=list(enumerate(['A',
+                                                         'B',
+                                                         'C',
+                                                         'D',
+                                                         'F'])),
+                                 validators=[
+                                     DataRequired()
+                                 ])
+    comment = StringField('Comment', validators=[
+        DataRequired
+    ])
+    submit = SubmitField('Comment')
