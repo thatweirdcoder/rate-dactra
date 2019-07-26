@@ -101,7 +101,7 @@ def edit_teacher(name):
 
     models.db.session.add(teacher)
     models.db.session.commit()
-    return redirect(url_for('.teacher_page', name=name))
+    return redirect(url_for('.teacher_page', name=teacher.name))
 
 
 @main.route('/review/<string:name>', methods=['POST'])
