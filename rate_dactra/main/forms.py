@@ -27,7 +27,7 @@ class EditTeacherForm(FlaskForm):
     email = EmailField('Teacher email address', validators=[
         Email()
     ])
-    phone = StringField('Teacher phone number (10XXXXXXXX) ', validators=[
+    phone = StringField('Teacher phone number', validators=[
         Length(min=10, max=13)
     ])
     submit = SubmitField('Edit')
@@ -47,11 +47,11 @@ class ReviewTeacherForm(FlaskForm):
 class CommentOnTeacherForm(FlaskForm):
     course_name = StringField('Class name')
     grade_received = SelectField('Grade received',
-                                 choices=list(enumerate(['A',
-                                                         'B',
-                                                         'C',
-                                                         'D',
-                                                         'F'])),
+                                 choices=(['A'] * 2,
+                                          ['B'] * 2,
+                                          ['C'] * 2,
+                                          ['D'] * 2,
+                                          ['F'] * 2),
                                  validators=[
                                      DataRequired()
                                  ])

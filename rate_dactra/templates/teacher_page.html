@@ -102,7 +102,7 @@
                 <h3>Comments</h3>
                 <ul>
                     {% for comment in comments %}
-                        <li>A {{ comment.grade_recived }} student who took {{ comment.course_name }}
+                        <li>A student who got {{ comment.grade_received }} on {{ comment.course_name }}
                             says: {{ comment.comment }}</li>
                     {% endfor %}
                 </ul>
