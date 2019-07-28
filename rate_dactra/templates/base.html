@@ -1,7 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 {% import 'bootstrap/utils.html' as utils %}
 
-{% block html_attribs %} lang="en"{% endblock %}
+{% block html_attribs %} lang='en'{% endblock %}
 
 {% block title %} | Rate Dactra{% endblock %}
 
@@ -14,8 +14,29 @@
 {% endblock %}
 
 {% block content %}
+    <main>
     <div class='container'>
         {{ utils.flashed_messages(container=False, dismissible=True) }}
         {% block page_content %}{% endblock %}
     </div>
+    </main>
+    <footer>
+        <p>Feel free to contact me with your concerns</p>
+        <div>
+            <a href='https://twitter.com/thatweirdcoder' target='_blank'><i class='fab fa-twitter-square fa-3x '
+                                                                            alt='@ me' aria-hidden='true'
+                                                                            title='Contact me on twitter'></i></a>
+            <a href='https://github.com/thatweirdcoder/rate-dactra' target='_blank'><i
+                    class='fab fa-github-square fa-3x' alt='Fork me' aria-hidden='true'
+                    title='Fork me on github'></i></a>
+        </div>
+        <p>made with love by: Coffee, that weird coder, more coffee.</p>
+        <p>&copy; Rate Dactra 2019</p>
+    </footer>
 {% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src='https://kit.fontawesome.com/4f3649c7ff.js'></script>
+{% endblock %}
+
