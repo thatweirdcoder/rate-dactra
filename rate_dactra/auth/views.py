@@ -18,7 +18,7 @@ def login():
             login_user(user, form.remember_me.data)
             next = request.args.get('next')
             if not next or not next.startswith('/'):
-                next = url_for('.admin')
+                next = url_for('admin.admin_home')
             return redirect(next)
         flash('DUMBFUCK', 'error')
     return render_template('login.html', **context)
