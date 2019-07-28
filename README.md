@@ -9,6 +9,5 @@ $ cd rate-dactra
 $ py -m pip install -r requirements.txt
 $ set FLASK_APP=rate-dactra.py
 $ set FLASK_ENV=development
-$ set FLASK_DEBUG=true
 $ py -m flask run
 ```

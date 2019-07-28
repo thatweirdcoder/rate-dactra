@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'not so secret huh'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(16)
     SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS', 'true')
     UPLOADED_PHOTOS_DEST = os.path.join(basedir, 'uploads')
 

@@ -19,8 +19,8 @@
         </div>
         <div>
             {% if teacher.reviews %}
-                <h3>Reviews</h3>
                 <ul>
+                    <h3>Reviews</h3>
                     {% if teacher.overall >= 50 %}
                         <li>Overall I give {{ teacher.name|title }} a {{ teacher.overall }}%. Not bad!</li>
                     {% else %}
@@ -99,8 +99,8 @@
         </div>
         <div>
             {% if comments %}
-                <h3>Comments</h3>
                 <ul>
+                    <h3>Comments</h3>
                     {% for comment in comments %}
                         <li>A student who got {{ comment.grade_received }} on {{ comment.course_name }}
                             says: {{ comment.comment }}</li>

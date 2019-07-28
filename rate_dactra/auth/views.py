@@ -1,5 +1,5 @@
 from flask import request, url_for, flash, render_template, redirect
-from flask_login import login_required, login_user, logout_user
+from flask_login import login_user, logout_user
 
 from . import auth
 from . import forms
@@ -22,15 +22,6 @@ def login():
             return redirect(next)
         flash('DUMBFUCK', 'error')
     return render_template('login.html', **context)
-
-
-@auth.route('/admin')
-@login_required
-def admin():
-    context = {
-
-    }
-    return render_template('admin.html', **context)
 
 
 @auth.route('/logout')

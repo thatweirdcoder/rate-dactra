@@ -134,3 +134,4 @@ def comment_on_teacher(name):
     models.db.session.commit()
     flash('Than you for your comment! You are Cute! :D')
     return redirect(url_for('.teacher_page', name=name))
+
