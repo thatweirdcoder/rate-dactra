@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(16)
     SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS', 'true')
-    UPLOADED_PHOTOS_DEST = os.path.join(basedir, 'uploads')
+    UPLOADED_PHOTOS_DEST = os.path.join(basedir, 'static/images/uploads')
 
     @staticmethod
     def init_app(app):
@@ -16,7 +16,7 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir,
-                                                                                                'db-dev.sqlite3')
+                                                                                                '../db-dev.sqlite3')
 
 
 class TestingConfig(Config):
