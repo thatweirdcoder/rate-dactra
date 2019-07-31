@@ -112,15 +112,15 @@
     <div>
         <div>
             <h2>Edit {{ teacher.name|title }}'s info</h2>
-            {{ wtf.quick_form(edit_teacher_form, action=url_for('main.edit_teacher', name=teacher.name)) }}
+            {{ wtf.quick_form(edit_teacher_form, action=url_for('teacher.edit_teacher', name=teacher.name)) }}
         </div>
         <div>
             <h2>Review {{ teacher.name|title }}</h2>
-            {{ wtf.quick_form(review_teacher_form, action=url_for('main.review_teacher', name=teacher.name)) }}
+            {{ wtf.quick_form(review_teacher_form, action=url_for('teacher.review_teacher', name=teacher.name)) }}
         </div>
         <div>
             <h2>Comment on {{ teacher.name|title }}</h2>
-            {{ wtf.quick_form(comment_on_teacher_form, action=url_for('main.comment_on_teacher', name=teacher.name)) }}
+            {{ wtf.quick_form(comment_on_teacher_form, action=url_for('teacher.comment_on_teacher', name=teacher.name)) }}
         </div>
     </div>
 {% endblock %}

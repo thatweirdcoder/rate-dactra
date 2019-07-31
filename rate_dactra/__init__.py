@@ -6,7 +6,7 @@ from config import config
 from .models import db, login_manager
 from .navbars import nav
 
-photos = UploadSet('photos', IMAGES)
+photos: UploadSet = UploadSet('photos', IMAGES)
 bootstrap = Bootstrap()
 
 
@@ -29,5 +29,8 @@ def create_app(configuration='default'):
 
     from .admin import admin as admin_blueprint
     app.register_blueprint(admin_blueprint)
+
+    from .teacher import teacher as teacher_blueprint
+    app.register_blueprint(teacher_blueprint)
 
     return app

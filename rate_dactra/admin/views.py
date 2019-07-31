@@ -5,8 +5,8 @@ from rate_dactra import models
 from . import admin, forms
 
 
-@login_required
 @admin.route('/admin')
+@login_required
 def admin_home():
     teachers = models.Teacher.query.filter_by(is_approved=False).all()
     comments = models.Comment.query.filter_by(is_approved=False).all()
@@ -16,11 +16,12 @@ def admin_home():
         'comments': comments,
         'approve_form': approve_form
     }
-    return render_template('admin.html', **context)
+    return render_template('admin/admin.html', **context)
 
 
-@login_required
+
 @admin.route('/approve/<item_type>/<item>', methods=['POST'])
+@login_required
 def approve(item_type, item):
     if item_type == 'teacher':
         item = models.Teacher.query.filter_by(id=item).first()

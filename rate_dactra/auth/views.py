@@ -21,7 +21,7 @@ def login():
                 next = url_for('admin.admin_home')
             return redirect(next)
         flash('DUMBFUCK', 'error')
-    return render_template('login.html', **context)
+    return render_template('auth/login.html', **context)
 
 
 @auth.route('/logout')
