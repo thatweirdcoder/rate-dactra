@@ -3,6 +3,13 @@
 
 {% block html_attribs %} lang='en'{% endblock %}
 
+{% block styles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{ super() }}
+{% endblock %}
+
+
 {% block title %} | Rate Dactra{% endblock %}
 
 {% block navbar %}
@@ -14,13 +21,12 @@
 {% endblock %}
 
 {% block content %}
-    <main>
     <div class='container'>
+    <main>
         {{ utils.flashed_messages(container=False, dismissible=True) }}
         {% block page_content %}{% endblock %}
-    </div>
     </main>
-    <footer>
+        <footer style="text-align:center; padding-top:3rem">
         <p>Feel free to contact me with your concerns</p>
         <div>
             <a href='https://twitter.com/thatweirdcoder' target='_blank'><i class='fab fa-twitter-square fa-3x '
@@ -33,6 +39,7 @@
         <p>made with love by: Coffee, that weird coder, more coffee.</p>
         <p>&copy; Rate Dactra 2019</p>
     </footer>
+    </div>
 {% endblock %}
 
 {% block scripts %}

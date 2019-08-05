@@ -31,7 +31,7 @@ class InverseBootstrapRenderer(BootstrapRenderer):
         node_id = self.id or sha1(str(id(node)).encode()).hexdigest()
 
         root = tags.nav() if self.html5 else tags.div(role='navigation')
-        root['class'] = 'navbar navbar-inverse'
+        root['class'] = 'navbar navbar-expand-md  navbar-inverse'
 
         cont = root.add(tags.div(_class='container-fluid'))
 

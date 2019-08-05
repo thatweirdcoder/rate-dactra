@@ -4,123 +4,158 @@
 {% block title %}{{ teacher.name|title }}{{ super() }}{% endblock %}
 
 {% block page_content %}
-    <div>
-        <div class='page-header'>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class='col m-1 w-100'>
+                    <div class="card">
             {% if teacher.photo %}
-                <img src="{{ teacher.photo }}">
+                <img src="{{ teacher.photo }}" class="card-img-top">
             {% endif %}
-            <h1>{{ teacher.name|title }}</h1>
+                        <div class="card-body">
+                            <h1 class="card-title">{{ teacher.name|title }}</h1>
             {% if teacher.email %}
-                <h4>Email: {{ teacher.email }}</h4>
+                <h4 class="card-text">Email: {{ teacher.email }}</h4>
             {% endif %}
             {% if teacher.phone %}
-                <h4>Phone: {{ teacher.phone }}</h4>
+                <h4 class="card-text">Phone: {{ teacher.phone }}</h4>
             {% endif %}
         </div>
-        <div>
+                    </div>
+                </div>
+                <div class="col m-1 w-100">
+                    <h2>Edit {{ teacher.name|title }}'s info</h2>
+                    {{ wtf.quick_form(edit_teacher_form, action=url_for('teacher.edit_teacher', name=teacher.name)) }}
+                </div>
+                <div class="col m-1 w-100">
+                    <h2>Review {{ teacher.name|title }}</h2>
+                    {{ wtf.quick_form(review_teacher_form, action=url_for('teacher.review_teacher', name=teacher.name)) }}
+                </div>
+                <div class="col m-1 w-100">
+                    <h2>Comment on {{ teacher.name|title }}</h2>
+                    {{ wtf.quick_form(comment_on_teacher_form, action=url_for('teacher.comment_on_teacher', name=teacher.name)) }}
+                </div>
+            </div>
+            <div class="col">
             {% if teacher.reviews %}
-                <ul>
-                    <h3>Reviews</h3>
+                <div class="card w-auto m-1">
+                    <div class="card-header">Review</div>
+                    <ul class="list-group list-group-flush">
                     {% if teacher.overall >= 50 %}
-                        <li>Overall I give {{ teacher.name|title }} a {{ teacher.overall }}%. Not bad!</li>
+                        <li class="list-group-item text-white bg-success">Overall I give {{ teacher.name|title }}
+                            a {{ teacher.overall }}%. Not bad!
+                        </li>
                     {% else %}
-                        <li>Overall I give {{ teacher.name|title }} a {{ teacher.overall }}%. Huh,
+                        <li class="list-group-item text-white bg-danger">Overall I give {{ teacher.name|title }}
+                            a {{ teacher.overall }}%. Huh,
                             is {{ teacher.name|title }} even trying!
                         </li>
                     {% endif %}
                     {% if teacher.take_again >= 50 %}
-                        <li>{{ teacher.take_again }}% students would take {{ teacher.name|title }}'s class again. Nice,
+                        <li class="list-group-item text-white bg-success">{{ teacher.take_again }}% students would
+                            take {{ teacher.name|title }}'s class again. Nice,
                             must
                             have been a nice experience.
                         </li>
                     {% else %}
-                        <li>{{ teacher.take_again }}% students would take {{ teacher.name|title }}'s class again. Wow,
+                        <li class="list-group-item text-white bg-danger">{{ teacher.take_again }}% students would
+                            take {{ teacher.name|title }}'s class again. Wow,
                             just
                             walk away buddy.
                         </li>
                     {% endif %}
                     {% if teacher.attendance >= 50 %}
-                        <li>{{ teacher.attendance }}% students think {{ teacher.name|title }} cares about attendance.
+                        <li class="list-group-item text-white bg-danger">{{ teacher.attendance }}% students
+                            think {{ teacher.name|title }} cares about attendance.
                             Don't
                             miss a lecture.
                         </li>
                     {% else %}
-                        <li>{{ teacher.attendance }}% students think {{ teacher.name|title }} cares about attendance.
+                        <li class="list-group-item text-white bg-success">{{ teacher.attendance }}% students
+                            think {{ teacher.name|title }} cares about attendance.
                             Now
                             you can sleep in like a baby I guess!
                         </li>
                     {% endif %}
                     {% if teacher.understanding >= 50 %}
-                        <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}.
+                        <li class="list-group-item text-white bg-success">{{ teacher.understanding }}% students can
+                            understand from {{ teacher.name|title }}.
                             Nnnnnnnice!
                         </li>
                     {% else %}
-                        <li>{{ teacher.understanding }}% students can understand from {{ teacher.name|title }}. The art
+                        <li class="list-group-item text-white bg-danger">{{ teacher.understanding }}% students can
+                            understand from {{ teacher.name|title }}. The art
                             of
                             reading powerpoint slides
                         </li>
                     {% endif %}
                     {% if teacher.sexism >= 50 %}
-                        <li>{{ teacher.sexism }}% students find {{ teacher.name|title }} sexist. Shame on you wallahi!
+                        <li class="list-group-item text-white bg-danger">{{ teacher.sexism }}% students
+                            find {{ teacher.name|title }} sexist. Shame on you wallahi!
                         </li>
                     {% else %}
-                        <li>{{ teacher.sexism }}% students find {{ teacher.name|title }}
+                        <li class="list-group-item text-white bg-success">{{ teacher.sexism }}% students
+                            find {{ teacher.name|title }}
                             sexist. {{ teacher.name|title }}
                             you make me proud.
                         </li>
                     {% endif %}
                     {% if teacher.bedan >= 50 %}
-                        <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. :) ...</li>
+                        <li class="list-group-item text-white bg-danger">{{ teacher.bedan }}% students
+                            think {{ teacher.name|title }} is bedan. :) ...
+                        </li>
                     {% else %}
-                        <li>{{ teacher.bedan }}% students think {{ teacher.name|title }} is bedan. So nice teachers do
+                        <li class="list-group-item text-white bg-success">{{ teacher.bedan }}% students
+                            think {{ teacher.name|title }} is bedan. So nice teachers do
                             exists? Huh!
                         </li>
                     {% endif %}
                     {% if teacher.interesting >= 50 %}
-                        <li>{{ teacher.interesting }}% students find {{ teacher.name|title }} interesting. Yayyyyy!</li>
+                        <li class="list-group-item text-white bg-success">{{ teacher.interesting }}% students
+                            find {{ teacher.name|title }} interesting. Yayyyyy!
+                        </li>
                     {% else %}
-                        <li>{{ teacher.interesting }}% students find {{ teacher.name|title }} interesting. Have some
+                        <li class="list-group-item text-white bg-danger">{{ teacher.interesting }}% students
+                            find {{ teacher.name|title }} interesting. Have some
                             coffee
                             before {{ teacher.name|title }}'s lecture.
                         </li>
                     {% endif %}
                     {% if teacher.english >= 50 %}
-                        <li>{{ teacher.english }}% students think {{ teacher.name|title }} is good at English. Good for
+                        <li class="list-group-item text-white bg-success">{{ teacher.english }}% students
+                            think {{ teacher.name|title }} is good at English. Good for
                             you {{ teacher.name|title }}.
                         </li>
                     {% else %}
-                        <li>{{ teacher.english }}% students think {{ teacher.name|title }} is good at English. If you
+                        <li class="list-group-item text-white bg-danger">{{ teacher.english }}% students
+                            think {{ teacher.name|title }} is good at English. If you
                             are a
                             foreigner, Take a translator with you!
                         </li>
                     {% endif %}
                 </ul>
+                </div>
             {% endif %}
         </div>
-        <div>
+        </div>
+        <div class="row-fluid">
             {% if comments %}
-                <ul>
-                    <h3>Comments</h3>
+                <div class="card-deck">
                     {% for comment in comments %}
-                        <li>A student who got {{ comment.grade_received }} on {{ comment.course_name }}
-                            says: {{ comment.comment }}</li>
+                        <div class="col-sm-3">
+                            <div class="card w-auto m-1">
+                                <div class="card-body">
+                                    <h5 class="card-title">A student who got <b>{{ comment.grade_received }}</b> on
+                                        <b>{{ comment.course_name }}</b> thinks:</h5>
+                                    <p class="card-text">{{ comment.comment }}</p>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
-                </ul>
+                </div>
             {% endif %}
         </div>
     </div>
-    <div>
-        <div>
-            <h2>Edit {{ teacher.name|title }}'s info</h2>
-            {{ wtf.quick_form(edit_teacher_form, action=url_for('teacher.edit_teacher', name=teacher.name)) }}
-        </div>
-        <div>
-            <h2>Review {{ teacher.name|title }}</h2>
-            {{ wtf.quick_form(review_teacher_form, action=url_for('teacher.review_teacher', name=teacher.name)) }}
-        </div>
-        <div>
-            <h2>Comment on {{ teacher.name|title }}</h2>
-            {{ wtf.quick_form(comment_on_teacher_form, action=url_for('teacher.comment_on_teacher', name=teacher.name)) }}
-        </div>
+
     </div>
 {% endblock %}
