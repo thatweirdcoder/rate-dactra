@@ -21,8 +21,9 @@ def teacher_page(name):
     teacher.interesting = (len([r for r in teacher.reviews if r.interesting])) // reviews_num
     teacher.english = (len([r for r in teacher.reviews if r.english])) // reviews_num
 
-    over_all = (teacher.take_again, teacher.attendance, teacher.understanding, teacher.sexism, teacher.bedan,
-                teacher.interesting, teacher.english)
+    over_all = (
+    teacher.take_again, 100 - teacher.attendance, teacher.understanding, 100 - teacher.sexism, 100 - teacher.bedan,
+    teacher.interesting, teacher.english)
     teacher.overall = sum(over_all) // len(over_all)
 
     context = {
