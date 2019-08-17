@@ -17,13 +17,12 @@ def teacher_page(name):
     teacher.attendance = (len([r for r in teacher.reviews if r.attendance])) // reviews_num
     teacher.understanding = (len([r for r in teacher.reviews if r.understanding])) // reviews_num
     teacher.sexism = (len([r for r in teacher.reviews if r.sexism])) // reviews_num
-    teacher.bedan = (len([r for r in teacher.reviews if r.bedan])) // reviews_num
     teacher.interesting = (len([r for r in teacher.reviews if r.interesting])) // reviews_num
     teacher.english = (len([r for r in teacher.reviews if r.english])) // reviews_num
 
     over_all = (
-    teacher.take_again, 100 - teacher.attendance, teacher.understanding, 100 - teacher.sexism, 100 - teacher.bedan,
-    teacher.interesting, teacher.english)
+        teacher.take_again, 100 - teacher.attendance, teacher.understanding, 100 - teacher.sexism,
+        teacher.interesting, teacher.english)
     teacher.overall = sum(over_all) // len(over_all)
 
     context = {
@@ -75,7 +74,6 @@ def review_teacher(name):
                            attendance=review_teacher_form.attendance.data,
                            understanding=review_teacher_form.understanding.data,
                            sexism=review_teacher_form.sexism.data,
-                           bedan=review_teacher_form.bedan.data,
                            interesting=review_teacher_form.interesting.data,
                            english=review_teacher_form.english.data,
                            teacher=teacher)

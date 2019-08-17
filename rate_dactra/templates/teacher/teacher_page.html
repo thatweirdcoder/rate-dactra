@@ -104,16 +104,6 @@
                             you make me proud.
                         </li>
                     {% endif %}
-                    {% if teacher.bedan >= 50 %}
-                        <li class="list-group-item text-white bg-danger">{{ teacher.bedan }}% students
-                            think {{ teacher.name|title }} is bedan. :) ...
-                        </li>
-                    {% else %}
-                        <li class="list-group-item text-white bg-success">{{ teacher.bedan }}% students
-                            think {{ teacher.name|title }} is bedan. So nice teachers do
-                            exists? Huh!
-                        </li>
-                    {% endif %}
                     {% if teacher.interesting >= 50 %}
                         <li class="list-group-item text-white bg-success">{{ teacher.interesting }}% students
                             find {{ teacher.name|title }} interesting. Yayyyyy!

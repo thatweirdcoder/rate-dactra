@@ -47,7 +47,6 @@ class Review(db.Model):
     attendance = db.Column(db.Boolean)
     understanding = db.Column(db.Boolean)
     sexism = db.Column(db.Boolean)
-    bedan = db.Column(db.Boolean)
     interesting = db.Column(db.Boolean)
     english = db.Column(db.Boolean)
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))

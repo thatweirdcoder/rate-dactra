@@ -22,9 +22,6 @@ def index():
 
     teachers = models.Teacher.query.order_by(models.Teacher.name).all()
 
-    for teacher in teachers:
-        teacher.bedan = f'''{
-        (len([r for r in teacher.reviews if r.bedan])) // ((len(teacher.reviews) if teacher.reviews else 1) / 100)}%'''
 
     context = {
         'form': form,

@@ -29,7 +29,6 @@ class ReviewTeacherForm(FlaskForm):
     attendance = BooleanField('Does the teacher care about attendance?')
     understanding = BooleanField('Do you understand from the teacher?')
     sexism = BooleanField('Does the teacher favour boys over girls or girls over boys? Sexist?')
-    bedan = BooleanField('Bedan?')
     interesting = BooleanField('Is the teacher interesting?')
     english = BooleanField('Is the teacher good at English?')
     submit = SubmitField('Review')

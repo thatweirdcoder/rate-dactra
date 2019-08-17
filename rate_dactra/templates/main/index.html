@@ -18,10 +18,15 @@
                         {% if teacher.photo %}                                                                                                              
                             <img src="{{ teacher.photo }}" class="card-img-top">                                                                            
                         {% endif %}                                                                                                                         
-                        <div class="card-body">                                                                                                             
-                            <h2 class="card-title">{{ teacher.name|title }}</h2>                                                                            
-                            <p class="card-text">{{ teacher.bedan }} Bedan</p>                                                                              
-                        </div>                                                                                                                              
+                        <div class="card-body">
+                            <h2 class="card-title">{{ teacher.name|title }}</h2>
+                            {% if teacher.email %}
+                                <h4 class="card-text">Email: {{ teacher.email }}</h4>
+                            {% endif %}
+                            {% if teacher.phone %}
+                                <h4 class="card-text">Phone: {{ teacher.phone }}</h4>
+                            {% endif %}
+                        </div>
                     </a>                                                                                                                                    
                 </div>                                                                                                                                      
             </div>                                                                                                                                          
