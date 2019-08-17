@@ -17,7 +17,7 @@ def index():
             flash('Already in the database!', 'error')
             models.db.session.rollback()
         else:
-            flash(f'{form.name.data.title()}, ahhhhhhhhhhhhhh welcome! :D', 'info')  # TODO: put evil emoji here
+            flash(f'{form.name.data.title()}, *evil laugh* welcome! :D', 'info')  # TODO: put evil emoji here
             return redirect(url_for('.index'))
 
     teachers = models.Teacher.query.order_by(models.Teacher.name).all()
