@@ -47,84 +47,66 @@
                     <ul class="list-group list-group-flush">
                     {% if teacher.overall >= 50 %}
                         <li class="list-group-item text-white bg-success">Overall I give {{ teacher.name|title }}
-                            a {{ teacher.overall }}%. Not bad!
+                            a {{ teacher.overall }}%.
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-danger">Overall I give {{ teacher.name|title }}
-                            a {{ teacher.overall }}%. Huh,
-                            is {{ teacher.name|title }} even trying!
+                            a {{ teacher.overall }}%.
                         </li>
                     {% endif %}
                     {% if teacher.take_again >= 50 %}
                         <li class="list-group-item text-white bg-success">{{ teacher.take_again }}% students would
-                            take {{ teacher.name|title }}'s class again. Nice,
-                            must
-                            have been a nice experience.
+                            take {{ teacher.name|title }}'s class again.
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-danger">{{ teacher.take_again }}% students would
-                            take {{ teacher.name|title }}'s class again. Wow,
-                            just
-                            walk away buddy.
+                            take {{ teacher.name|title }}'s class again.
                         </li>
                     {% endif %}
                     {% if teacher.attendance >= 50 %}
                         <li class="list-group-item text-white bg-danger">{{ teacher.attendance }}% students
                             think {{ teacher.name|title }} cares about attendance.
-                            Don't
-                            miss a lecture.
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-success">{{ teacher.attendance }}% students
                             think {{ teacher.name|title }} cares about attendance.
-                            Now
-                            you can sleep in like a baby I guess!
                         </li>
                     {% endif %}
                     {% if teacher.understanding >= 50 %}
                         <li class="list-group-item text-white bg-success">{{ teacher.understanding }}% students can
                             understand from {{ teacher.name|title }}.
-                            Nnnnnnnice!
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-danger">{{ teacher.understanding }}% students can
-                            understand from {{ teacher.name|title }}. The art
-                            of
-                            reading powerpoint slides
+                            understand from {{ teacher.name|title }}.
                         </li>
                     {% endif %}
                     {% if teacher.sexism >= 50 %}
                         <li class="list-group-item text-white bg-danger">{{ teacher.sexism }}% students
-                            find {{ teacher.name|title }} sexist. Shame on you wallahi!
+                            find {{ teacher.name|title }} sexist.
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-success">{{ teacher.sexism }}% students
                             find {{ teacher.name|title }}
                             sexist. {{ teacher.name|title }}
-                            you make me proud.
                         </li>
                     {% endif %}
                     {% if teacher.interesting >= 50 %}
                         <li class="list-group-item text-white bg-success">{{ teacher.interesting }}% students
-                            find {{ teacher.name|title }} interesting. Yayyyyy!
+                            find {{ teacher.name|title }} interesting.
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-danger">{{ teacher.interesting }}% students
-                            find {{ teacher.name|title }} interesting. Have some
-                            coffee
-                            before {{ teacher.name|title }}'s lecture.
+                            find {{ teacher.name|title }} interesting.
                         </li>
                     {% endif %}
                     {% if teacher.english >= 50 %}
                         <li class="list-group-item text-white bg-success">{{ teacher.english }}% students
-                            think {{ teacher.name|title }} is good at English. Good for
-                            you {{ teacher.name|title }}.
+                            think {{ teacher.name|title }} is good at English.
                         </li>
                     {% else %}
                         <li class="list-group-item text-white bg-danger">{{ teacher.english }}% students
-                            think {{ teacher.name|title }} is good at English. If you
-                            are a
-                            foreigner, Take a translator with you!
+                            think {{ teacher.name|title }} is good at English.
                         </li>
                     {% endif %}
                 </ul>
