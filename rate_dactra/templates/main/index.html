@@ -1,13 +1,14 @@
 {% extends 'base.html' %}                                                                                                                                   
-{% import 'bootstrap/wtf.html' as wtf %}                                                                                                                    
-                                                                                                                                                            
+
 {% block title %}Rate Dactra | The Unfiltered Recourse for Engineering Teachers{% endblock %}                                                               
                                                                                                                                                             
 {% block page_content %}                                                                                                                                    
     <div class='page-header'>                                                                                                                               
-        <h1>Hello!</h1>                                                                                                                                     
-        <p>this webapp is intended for students to leave reviews about college professors for other students .. click on your teather's card to review him or add him/her by inserting his/her name below .. tweet me @thatweirdcoder for bugs and requests .. </p>                                                     
-        {{ wtf.quick_form(form) }}                                                                                                                          
+        <h1>Hello!</h1>
+        <p>this webapp is intended for students to leave reviews about college professors for other students .. click on
+            your teather's card to review him or add him/her by inserting his/her name below .. tweet me @thatweirdcoder
+            for bugs and requests .. </p>
+        {#        {{ wtf.quick_form(form) }}                                                                                                                          #}
     </div>                                                                                                                                                  
     <div class="row-fluid">                                                                                                                                 
         <div class="card-deck">                                                                                                                             

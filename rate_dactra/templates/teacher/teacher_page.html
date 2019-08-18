@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}{{ teacher.name|title }}{{ super() }}{% endblock %}
 
@@ -28,16 +27,16 @@
                 </div>
                 <div class="col m-1 w-100">
                     <h2>Edit {{ teacher.name|title }}'s info</h2>
-                    {{ wtf.quick_form(edit_teacher_form, action=url_for('teacher.edit_teacher', name=teacher.name)) }}
+                    {#                    {{ wtf.quick_form(edit_teacher_form, action=url_for('teacher.edit_teacher', name=teacher.name)) }}#}
                 </div>
                 <div class="col m-1 w-100">
                     <h2>Review {{ teacher.name|title }}</h2>
                     <p>(check the box for yes and leave it blank for no)</p>
-                    {{ wtf.quick_form(review_teacher_form, action=url_for('teacher.review_teacher', name=teacher.name)) }}
+                    {#                    {{ wtf.quick_form(review_teacher_form, action=url_for('teacher.review_teacher', name=teacher.name)) }}#}
                 </div>
                 <div class="col m-1 w-100">
                     <h2>Comment on {{ teacher.name|title }}</h2>
-                    {{ wtf.quick_form(comment_on_teacher_form, action=url_for('teacher.comment_on_teacher', name=teacher.name)) }}
+                    {#                    {{ wtf.quick_form(comment_on_teacher_form, action=url_for('teacher.comment_on_teacher', name=teacher.name)) }}#}
                 </div>
             </div>
             <div class="col">

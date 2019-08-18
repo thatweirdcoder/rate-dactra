@@ -1,15 +1,16 @@
 from flask import Flask
-from flask_bootstrap import Bootstrap
 from flask_uploads import configure_uploads, patch_request_class, UploadSet, IMAGES
+
 from .config import config
 from .models import db, login_manager
 from .navbars import nav
+
 photos: UploadSet = UploadSet('photos', IMAGES)
-bootstrap = Bootstrap()
+
+
 def create_app(configuration='default'):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config[configuration])
-    bootstrap.init_app(app)
     db.init_app(app)
     nav.init_app(app)
     login_manager.init_app(app)

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}Admin Panel{{ super() }}{% endblock %}
 
@@ -15,7 +14,7 @@
                         <p>{{ teacher.name|title }}</p>
                         <p>Email: {{ teacher.email }}</p>
                         <p>Phone: {{ teacher.phone }}</p>
-                        {{ wtf.quick_form(approve_form, action=url_for('admin.approve', item=teacher.id, item_type='teacher')) }}
+                        {#                        {{ wtf.quick_form(approve_form, action=url_for('admin.approve', item=teacher.id, item_type='teacher')) }}#}
                     </div>
                 </li>
             {% endfor %}
@@ -30,7 +29,7 @@
                     <div>
                         <p>A student who got {{ comment.grade_received }} on {{ comment.course_name }}
                             says: {{ comment.comment }}</p>
-                        {{ wtf.quick_form(approve_form, action=url_for('admin.approve', item=comment.id, item_type='comment')) }}
+                        {#                        {{ wtf.quick_form(approve_form, action=url_for('admin.approve', item=comment.id, item_type='comment')) }}#}
                     </div>
                 </li>
             {% endfor %}
